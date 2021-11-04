@@ -41,11 +41,12 @@ void DogDriverNode::connect()
 	serialPort.Open();
 
 	// check conection parameter
-	ROS_INFO("Starting '%s' at %u, Verif: %d", dog_device_.c_str(), (unsigned int)baud_, isVerif_);
+	ROS_INFO("Starting \033[1;32;40m'%s'\033[0m at \033[1;32;40m%u\033[0m, Verif: %d", dog_device_.c_str(), (unsigned int)baud_, isVerif_);
 }
 
 void DogDriverNode::disconnect()
 {
+	stop();
 	serialPort.Close();
 }
 
@@ -56,6 +57,7 @@ void DogDriverNode::stop()
 
 void DogDriverNode::checkPort()
 {
+	mtx.lock();
 	std::string readData;
 	serialPort.Read(readData);
 	if(readData.empty()) return;
@@ -78,7 +80,7 @@ void DogDriverNode::checkPort()
 	{
 		ROS_WARN("Serial communi occur error!");
 	}
-	
+	mtx.unlock();
 }
 
 void DogDriverNode::parseOdometry()
@@ -148,7 +150,7 @@ void DogDriverNode::PublishTF()
 
 void DogDriverNode::setVelocity(double vX, double vY, double vZ, double vYaw, double vPitch, double vRoll)
 {
-	std::string outputCmd("c");
+	std::string outputCmd = CONTROL_VEL;
 	std::vector<double> outputSpeed(6, 0.0); // x, y, z, yaw, pitch, roll
 	outputSpeed[0] = vX;
 	outputSpeed[1] = vY;
@@ -170,8 +172,6 @@ void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
 {
 	// ROS_INFO("RECEIVE MSG");
 	mtx.lock();
-	std::string outputCmd("c");
-	std::vector<double> outputSpeed(6, 0.0); // x, y, z, yaw, pitch, roll
 	setVelocity(cmdVel->linear.x, cmdVel->linear.y, cmdVel->linear.z,
 					cmdVel->angular.z, cmdVel->angular.y, cmdVel->angular.x);
 	mtx.unlock();
@@ -179,6 +179,13 @@ void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
 
 void DogDriverNode::ResetOdomIntegratorCallback(const std_msgs::Bool::ConstPtr& msg)
 {
+	mtx.lock();
+	if(msg->data)
+	{
+		curPosition.setZero();
+		curPose.setIdentity();
+	}
+	mtx.unlock();
 }
 
 void DogDriverNode::spin()
