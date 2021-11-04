@@ -1,0 +1,27 @@
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:[m[K In constructor ‘[01m[Kdog_driver::DogDriverNode::DogDriverNode()[m[K’:
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:10:32:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kros::NodeHandle::param(const char [5], unsigned int&, int)[m[K’
+  n_.param("baud", baud_, 115200[01;31m[K)[m[K;
+                                [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/include/ros_gogodog_bridge/dog_driver_node.hpp:4[m[K,
+                 from [01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:2[m[K:
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:2120:8:[m[K [01;36m[Knote: [m[Kcandidate: template<class T> bool ros::NodeHandle::param(const string&, T&, const T&) const
+   bool [01;36m[Kparam[m[K(const std::string& param_name, T& param_val, const T& default_val) const
+        [01;36m[K^~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:2120:8:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:10:32:[m[K [01;36m[Knote: [m[K  deduced conflicting types for parameter ‘[01m[Kconst T[m[K’ (‘[01m[Kunsigned int[m[K’ and ‘[01m[Kint[m[K’)
+  n_.param("baud", baud_, 115200[01;36m[K)[m[K;
+                                [01;36m[K^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/include/ros_gogodog_bridge/dog_driver_node.hpp:4[m[K,
+                 from [01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:2[m[K:
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:2153:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class T> T ros::NodeHandle::param(const string&, const T&) const
+   T [01;36m[Kparam[m[K(const std::string& param_name, const T& default_val) const
+     [01;36m[K^~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:2153:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:10:32:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 3 provided
+  n_.param("baud", baud_, 115200[01;36m[K)[m[K;
+                                [01;36m[K^[m[K
+make[2]: *** [CMakeFiles/dog_driver_node.dir/src/dog_driver_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/dog_driver_node.dir/all] Error 2
+make: *** [all] Error 2

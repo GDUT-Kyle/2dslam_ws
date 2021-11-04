@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/kyle/ros/2dslam_ws/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/kyle/ros/2dslam_ws/src/laser-line-segment/include/**",
+                "/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/include/**",
+                "/usr/include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64",
+            // 注意这里lins是我想要使用自动补全功能的功能包，因此应该改成自己正在开发的功能包名
+            "compileCommands": "${workspaceFolder}/build/ros_arduino_bridge/compile_commands.json"
+        }
+    ],
+    "version": 4
+}

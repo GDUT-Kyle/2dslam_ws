@@ -1,0 +1,7 @@
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:[m[K In constructor ‘[01m[Kdog_driver::DogDriverNode::DogDriverNode()[m[K’:
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:15:78:[m[K [01;31m[Kerror: [m[K‘[01m[KcmdVelHandlerm[m[K’ is not a member of ‘[01m[Kdog_driver::DogDriverNode[m[K’
+  sub_vel = n_.subscribe<geometry_msgs::Twist>("/cmd_vel", 5, &DogDriverNode::[01;31m[KcmdVelHandlerm[m[K, this);
+                                                                              [01;31m[K^~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/dog_driver_node.dir/src/dog_driver_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/dog_driver_node.dir/all] Error 2
+make: *** [all] Error 2

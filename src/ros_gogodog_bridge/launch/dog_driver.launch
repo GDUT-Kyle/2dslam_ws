@@ -1,0 +1,9 @@
+<launch>
+  <node name="dog_driver_node" pkg="ros_gogodog_bridge" type="dog_driver_node" output="screen" >
+    <param name="dog_device" value="/dev/pts/3" />
+    <param name="baud" value="115200" type="int" />
+    <param name="framerate" value="50" type="int" />
+    <param name="isVerif" value="false" type="bool" />
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ros_gogodog_bridge)/config/test.rviz" />
+</launch>

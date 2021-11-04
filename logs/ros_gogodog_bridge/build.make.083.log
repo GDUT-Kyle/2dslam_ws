@@ -1,0 +1,12 @@
+[35m[1mScanning dependencies of target dog_driver_node[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/dog_driver_node.dir/src/dog_driver_node.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable /home/kyle/ros/2dslam_ws/devel/.private/ros_gogodog_bridge/lib/ros_gogodog_bridge/dog_driver_node[0m
+CMakeFiles/dog_driver_node.dir/src/dog_driver_node.cpp.o: In function `dog_driver::DogDriverNode::checkPort()':
+dog_driver_node.cpp:(.text+0x800): undefined reference to `split(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, char)'
+collect2: error: ld returned 1 exit status
+CMakeFiles/dog_driver_node.dir/build.make:144: recipe for target '/home/kyle/ros/2dslam_ws/devel/.private/ros_gogodog_bridge/lib/ros_gogodog_bridge/dog_driver_node' failed
+make[2]: *** [/home/kyle/ros/2dslam_ws/devel/.private/ros_gogodog_bridge/lib/ros_gogodog_bridge/dog_driver_node] Error 1
+CMakeFiles/Makefile2:67: recipe for target 'CMakeFiles/dog_driver_node.dir/all' failed
+make[1]: *** [CMakeFiles/dog_driver_node.dir/all] Error 2
+Makefile:140: recipe for target 'all' failed
+make: *** [all] Error 2

@@ -1,0 +1,8 @@
+prefix=/home/kyle/ros/2dslam_ws/install
+
+Name: ros_gogodog_bridge
+Description: Description of ros_gogodog_bridge
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lros_gogodog_bridge
+Requires: 

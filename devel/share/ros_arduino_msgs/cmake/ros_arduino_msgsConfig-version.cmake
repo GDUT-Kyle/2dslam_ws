@@ -1,0 +1,1 @@
+/home/kyle/ros/2dslam_ws/devel/.private/ros_arduino_msgs/share/ros_arduino_msgs/cmake/ros_arduino_msgsConfig-version.cmake

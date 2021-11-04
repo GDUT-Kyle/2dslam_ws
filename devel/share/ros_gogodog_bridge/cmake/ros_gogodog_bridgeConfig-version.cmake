@@ -1,0 +1,1 @@
+/home/kyle/ros/2dslam_ws/devel/.private/ros_gogodog_bridge/share/ros_gogodog_bridge/cmake/ros_gogodog_bridgeConfig-version.cmake

@@ -1,0 +1,11 @@
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:[m[K In member function ‘[01m[Kvoid dog_driver::DogDriverNode::checkPort()[m[K’:
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:55:2:[m[K [01;31m[Kerror: [m[K‘[01m[Ksplit[m[K’ was not declared in this scope
+  [01;31m[Ksplit[m[K(readData, vecData, ' ');
+  [01;31m[K^~~~~[m[K
+[01m[K/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/src/dog_driver_node.cpp:55:2:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kspin[m[K’
+  [01;36m[Ksplit[m[K(readData, vecData, ' ');
+  [01;36m[K^~~~~[m[K
+  [32m[Kspin[m[K
+make[2]: *** [CMakeFiles/dog_driver_node.dir/src/dog_driver_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/dog_driver_node.dir/all] Error 2
+make: *** [all] Error 2

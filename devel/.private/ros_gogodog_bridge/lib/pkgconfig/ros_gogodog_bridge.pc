@@ -1,0 +1,8 @@
+prefix=/home/kyle/ros/2dslam_ws/devel/.private/ros_gogodog_bridge
+
+Name: ros_gogodog_bridge
+Description: Description of ros_gogodog_bridge
+Version: 0.0.0
+Cflags: -I/home/kyle/ros/2dslam_ws/src/ros_gogodog_bridge/include
+Libs: -L${prefix}/lib -lros_gogodog_bridge
+Requires: 

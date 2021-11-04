@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/kyle/ros/2dslam_ws/install/setup.sh

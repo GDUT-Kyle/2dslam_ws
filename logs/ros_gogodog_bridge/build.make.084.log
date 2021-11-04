@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target dog_driver_node[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/dog_driver_node.dir/src/util.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable /home/kyle/ros/2dslam_ws/devel/.private/ros_gogodog_bridge/lib/ros_gogodog_bridge/dog_driver_node[0m
+[100%] Built target dog_driver_node
