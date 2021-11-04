@@ -63,6 +63,7 @@ public:
     void parseOdometry();
     void PublishOdometryToROS();
     void PublishTF();
+    void setVelocity(double vX, double vY, double vZ, double vYaw, double vPitch, double vRoll);
     void cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel);
     void ResetOdomIntegratorCallback(const std_msgs::Bool::ConstPtr& msg);
 };

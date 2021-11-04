@@ -51,6 +51,7 @@ void DogDriverNode::disconnect()
 
 void DogDriverNode::stop()
 {
+	setVelocity(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 }
 
 void DogDriverNode::checkPort()
@@ -145,18 +146,16 @@ void DogDriverNode::PublishTF()
 						odomMsg.header.frame_id, odomMsg.child_frame_id));
 }
 
-void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
+void DogDriverNode::setVelocity(double vX, double vY, double vZ, double vYaw, double vPitch, double vRoll)
 {
-	// ROS_INFO("RECEIVE MSG");
-	mtx.lock();
 	std::string outputCmd("c");
 	std::vector<double> outputSpeed(6, 0.0); // x, y, z, yaw, pitch, roll
-	outputSpeed[0] = cmdVel->linear.x;
-	outputSpeed[1] = cmdVel->linear.y;
-	outputSpeed[2] = cmdVel->linear.z;
-	outputSpeed[3] = cmdVel->angular.z;
-	outputSpeed[4] = cmdVel->angular.y;
-	outputSpeed[5] = cmdVel->angular.x;
+	outputSpeed[0] = vX;
+	outputSpeed[1] = vY;
+	outputSpeed[2] = vZ;
+	outputSpeed[3] = vYaw;
+	outputSpeed[4] = vPitch;
+	outputSpeed[5] = vRoll;
 	for(size_t i=0; i<outputSpeed.size(); i++)
 	{
 		outputCmd += " ";
@@ -164,6 +163,17 @@ void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
 	}
 	outputCmd += std::string("\r");
 	serialPort.Write((outputCmd).c_str());
+	ROS_DEBUG("Set velocity : (%s)", outputCmd.c_str());
+}
+
+void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
+{
+	// ROS_INFO("RECEIVE MSG");
+	mtx.lock();
+	std::string outputCmd("c");
+	std::vector<double> outputSpeed(6, 0.0); // x, y, z, yaw, pitch, roll
+	setVelocity(cmdVel->linear.x, cmdVel->linear.y, cmdVel->linear.z,
+					cmdVel->angular.z, cmdVel->angular.y, cmdVel->angular.x);
 	mtx.unlock();
 }
 
