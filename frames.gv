@@ -1,0 +1,13 @@
+digraph G {
+"map" -> "odom"[label="Broadcaster: /stdr_gmapping_node\nAverage rate: 20.202 Hz\nMost recent transform: 1636078200.990 ( -0.029 sec old)\nBuffer length: 4.950 sec\n"];
+"odom" -> "dog_base"[label="Broadcaster: /dog_driver_node\nAverage rate: 9.917 Hz\nMost recent transform: 1636078200.865 ( 0.096 sec old)\nBuffer length: 4.840 sec\n"];
+"dog" -> "laser"[label="Broadcaster: /dog_to_scan\nAverage rate: 10.191 Hz\nMost recent transform: 1636078201.031 ( -0.070 sec old)\nBuffer length: 4.906 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1636078200.961"[ shape=plaintext ] ;
+ }->"map";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1636078200.961"[ shape=plaintext ] ;
+ }->"dog";
+}

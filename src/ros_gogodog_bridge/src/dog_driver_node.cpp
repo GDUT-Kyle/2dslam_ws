@@ -37,7 +37,7 @@ void DogDriverNode::connect()
 {
 	serialPort.SetDevice(dog_device_);
 	serialPort.SetBaudRate((unsigned int)baud_);
-	serialPort.SetTimeout(0.5);
+	serialPort.SetTimeout(0.01);
 	serialPort.Open();
 
 	// check conection parameter
@@ -57,7 +57,7 @@ void DogDriverNode::stop()
 
 void DogDriverNode::checkPort()
 {
-	mtx.lock();
+	// mtx.lock();
 	std::string readData;
 	serialPort.Read(readData);
 	if(readData.empty()) return;
@@ -80,7 +80,7 @@ void DogDriverNode::checkPort()
 	{
 		ROS_WARN("Serial communi occur error!");
 	}
-	mtx.unlock();
+	// mtx.unlock();
 }
 
 void DogDriverNode::parseOdometry()
@@ -171,21 +171,21 @@ void DogDriverNode::setVelocity(double vX, double vY, double vZ, double vYaw, do
 void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
 {
 	// ROS_INFO("RECEIVE MSG");
-	mtx.lock();
+	// mtx.lock();
 	setVelocity(cmdVel->linear.x, cmdVel->linear.y, cmdVel->linear.z,
 					cmdVel->angular.z, cmdVel->angular.y, cmdVel->angular.x);
-	mtx.unlock();
+	// mtx.unlock();
 }
 
 void DogDriverNode::ResetOdomIntegratorCallback(const std_msgs::Bool::ConstPtr& msg)
 {
-	mtx.lock();
+	// mtx.lock();
 	if(msg->data)
 	{
 		curPosition.setZero();
 		curPose.setIdentity();
 	}
-	mtx.unlock();
+	// mtx.unlock();
 }
 
 void DogDriverNode::spin()
