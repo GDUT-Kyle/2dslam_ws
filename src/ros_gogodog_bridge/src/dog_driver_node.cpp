@@ -40,6 +40,10 @@ void DogDriverNode::connect()
 	serialPort.SetTimeout(0.01);
 	serialPort.Open();
 
+	setVelocity(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	lastMovingTime = ros::Time::now().toSec();
+	isMoving = false;
+
 	// check conection parameter
 	ROS_INFO("Starting \033[1;32;40m'%s'\033[0m at \033[1;32;40m%u\033[0m, Verif: %d", dog_device_.c_str(), (unsigned int)baud_, isVerif_);
 }
@@ -79,6 +83,14 @@ void DogDriverNode::checkPort()
 	else
 	{
 		ROS_WARN("Serial communi occur error!");
+	}
+	if(isMoving)
+	{
+		if(ros::Time::now().toSec()-lastMovingTime>0.2) // timeout
+		{
+			setVelocity(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+			isMoving = false;
+		}
 	}
 	// mtx.unlock();
 }
@@ -161,7 +173,8 @@ void DogDriverNode::setVelocity(double vX, double vY, double vZ, double vYaw, do
 	for(size_t i=0; i<outputSpeed.size(); i++)
 	{
 		outputCmd += " ";
-		outputCmd += std::to_string(outputSpeed[i]);
+		// outputCmd += std::to_string(outputSpeed[i]);
+		outputCmd += to_string_with_high_precision(outputSpeed[i], 2);
 	}
 	outputCmd += std::string("\r");
 	serialPort.Write((outputCmd).c_str());
@@ -174,6 +187,9 @@ void DogDriverNode::cmdVelHandler(const geometry_msgs::Twist::ConstPtr cmdVel)
 	// mtx.lock();
 	setVelocity(cmdVel->linear.x, cmdVel->linear.y, cmdVel->linear.z,
 					cmdVel->angular.z, cmdVel->angular.y, cmdVel->angular.x);
+
+	lastMovingTime = ros::Time::now().toSec();
+	isMoving = true;
 	// mtx.unlock();
 }
 

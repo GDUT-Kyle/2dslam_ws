@@ -49,6 +49,9 @@ protected:
     double dt = 0.0;
     bool initTime = false;
 
+    double lastMovingTime = 0.0;
+    bool isMoving = false;
+
     nav_msgs::Odometry odomMsg;
 
 public:

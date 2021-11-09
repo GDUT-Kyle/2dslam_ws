@@ -1,6 +1,9 @@
 #include <vector>
 #include <string>
 #include <math.h>
+#include <sstream>
+#include <iostream> 
+#include <iomanip>
 
 /**
  * @brief 字符分割
@@ -41,3 +44,10 @@ T toDeg(T rad)
   return rad * 180.0 / M_PI;
 }
 
+std::string to_string_with_high_precision(double value, int precision = 20)
+{
+	std::stringstream ss;
+	// ss.precision(precision);
+	ss << std::fixed << std::setprecision(precision) << value;
+	return ss.str();
+}

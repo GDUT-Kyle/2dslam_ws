@@ -18,5 +18,6 @@ T toDeg(T rad)
   return rad * 180.0 / M_PI;
 }
 
+std::string to_string_with_high_precision(double value, int precision = 20);
 
 #endif
